@@ -18,9 +18,19 @@ ssh-keygen -f ~/.ssh/id_rsa -N ''
 git config --global user.email ${GIT_EMAIL}
 git config --global user.name ${GIT_NAME}
 
+git clone --depth 1 https://github.com/HaomingJu/Snippets.git ~/.config/haoming/Snippets
+git clone --depth 1 https://github.com/HaomingJu/Cheats.git ~/.config/haoming/Cheats
+
 # navi
 bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+
+# autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# deploy rc file
+rm ~/.zshrc && ln -s `pwd`/conf/zshrc ~/.zshrc
