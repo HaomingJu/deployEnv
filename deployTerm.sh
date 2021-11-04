@@ -29,6 +29,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # deploy rc file
 rm ~/.zshrc && ln -s `pwd`/conf/zshrc ~/.zshrc
+rm ~/.tigrc && ln -s `pwd`/conf/tigrc ~/.tigrc
+rm ~/.tigrc.theme && ln -s `pwd`/conf/tigrc.theme ~/.tigrc.theme
 
 # navi
 bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
