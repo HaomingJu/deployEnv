@@ -34,3 +34,5 @@ rm ~/.tigrc.theme && ln -s `pwd`/conf/tigrc.theme ~/.tigrc.theme
 
 # navi
 bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+
+git config --global core.excludesfile `pwd`/conf/.gitignore
