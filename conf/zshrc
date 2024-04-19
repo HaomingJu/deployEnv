@@ -1,32 +1,22 @@
-#set -o vi
-# oh my zsh conf
-plugins=(git colored-man-pages z cp extract history)
+RED='\033[0;31m'
+NC='\033[0m'
+
+plugins=(git colored-man-pages z cp extract history zsh-autosuggestions)
 export ZSH=$HOME/.oh-my-zsh
 export TERM=xterm-256color
-ZSH_THEME="robbyrussell"
+ZSH_THEME="mikeh"
 HIST_STAMPS="yyyy-mm-dd"
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt nonomatch
 source $ZSH/oh-my-zsh.sh
 
-
-# autosuggest conf
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,bold,underline"
-
 # alias conf
-alias CL='clang-format-3.8 -i'
 alias ll='ls -alh'
 alias l='ls -lh'
 alias g='git status'
 alias gb='git branch -avv'
 alias t='tig'
-alias c='clang-format-3.8 -i'
-alias vi='vim'
-alias v='vim'
-alias cp='cpv'
-alias rm='rm -rf'
 
 
 # fzf conf
@@ -38,25 +28,21 @@ bindkey '^H' backward-kill-word
 export FZF_DEFAULT_COMMAND='ag -g '
 export FZF_DEFAULT_OPTS='--color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254 --color info:254,prompt:37,spinner:108,pointer:235,marker:235'
 
-
-# distcc
-#export CCACHE_PREFIX="distcc"
-#export CC="ccache gcc" CXX="ccache g++"
-#export DISTCC_HOSTS="192.168.3.92/16 localhost/8"
-#export DISTCC_LOG="/var/log/trunk/distcc"
-
-export PATH=${PATH}:${HOME}/.config/coc/extensions/coc-clangd-data/install/clangd_13.0.0/bin
-
-
 # navi conf
-export PATH=${PATH}:${HOME}/.cargo/bin
-export NAVI_PATH=${HOME}/.vim/Cheats
+export NAVI_PATH=${HOME}/.config/Cheats
 eval "$(navi widget zsh)"
+export PATH=$PATH:/opt/clangd_18.1.3/bin:${HOME}/.local/bin:${HOME}/.cargo/bin
 
-export PATH="$PATH:/opt/nvim-linux64/bin:/opt/clangd_17.0.3/bin"
+# 判断是否在WSL中
+if [[ $(grep -i "microsoft-standard-wsl" /proc/version) ]]; then
+    echo -e "${RED}Bash is running on WSL${NC}"
+    export HOST_IP=$(ip route show | grep -i default | awk '{ print $3}')
+    export WSL_IP=$(ifconfig eth0 | grep 'inet ' | awk '{print $2}')
+    echo "${RED}WSL_IP${NC}:  $WSL_IP"
+    echo "${RED}HOST_IP${NC}: $HOST_IP"
+fi
 
+alias bashly='docker run --rm -it --user $(id -u):$(id -g) --volume "$PWD:/app" dannyben/bashly'
+export LC_ALL="C.UTF-8"
 
-# proxy conf
-export HOST_IP=$(ip route show | grep -i default | awk '{ print $3}')
-export http_proxy="http://$HOST_IP:7890"
-export https_proxy="http://$HOST_IP:7890"
+source ~/custom.profile
