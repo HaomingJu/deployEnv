@@ -10,7 +10,6 @@ COPY . /root/deployEnv
 
 RUN /root/deployEnv/setup_base.sh --home=/root --ubuntu-ver=${UBUNTU_VERSION}
 
-
 RUN /root/deployEnv/setup_cargo.sh
 
 RUN /root/deployEnv/setup_pip.sh
@@ -20,3 +19,7 @@ RUN /root/deployEnv/setup_npm.sh
 RUN /root/deployEnv/setup_src.sh --home=/root --ubuntu-ver=${UBUNTU_VERSION}
 
 RUN /root/deployEnv/setup_ssh.sh
+
+EXPOSE 22
+
+ENTRYPOINT [ "/root/deployEnv/entrypoint.sh" ]
