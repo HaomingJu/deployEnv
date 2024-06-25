@@ -19,4 +19,4 @@ RUN /root/deployEnv/setup_npm.sh
 
 RUN /root/deployEnv/setup_src.sh --home=/root --ubuntu-ver=${UBUNTU_VERSION}
 
-
+RUN /root/deployEnv/setup_ssh.sh

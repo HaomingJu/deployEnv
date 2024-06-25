@@ -40,7 +40,7 @@ ${SUDO} apt install -y \
     tig tree silversearcher-ag htop ssh unzip cargo \
     lsb-release npm rsync language-pack-zh-hans \
     software-properties-common net-tools universal-ctags \
-    python3-pip
+    python3-pip openssh-server
 
 curl https://apt.kitware.com/keys/kitware-archive-latest.asc | ${SUDO} apt-key add -
 
