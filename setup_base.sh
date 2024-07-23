@@ -62,4 +62,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 pushd /opt
     wget https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip
     unzip clangd-linux-18.1.3.zip
+    rm clangd-linux-18.1.3.zip
 popd

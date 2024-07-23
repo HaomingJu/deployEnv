@@ -45,4 +45,6 @@ fi
 alias bashly='docker run --rm -it --user $(id -u):$(id -g) --volume "$PWD:/app" dannyben/bashly'
 export LC_ALL="C.UTF-8"
 
+export CC="distcc"
+export CXX="distcc g++"
 source ~/custom.profile
