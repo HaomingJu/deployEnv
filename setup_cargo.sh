@@ -2,5 +2,5 @@
 
 cargo install --locked navi
 
-cargo install tree-sitter-cli
+# cargo install tree-sitter-cli
 
