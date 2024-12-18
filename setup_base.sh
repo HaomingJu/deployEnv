@@ -49,7 +49,7 @@ echo "deb https://apt.kitware.com/ubuntu/ `lsb_release -c -s` main" | ${SUDO} te
 ${SUDO} add-apt-repository -y -n ppa:neovim-ppa/unstable
 ${SUDO} add-apt-repository -y -n ppa:git-core/ppa
 ${SUDO} apt update
-${SUDO} apt install -y cmake git neovim
+${SUDO} apt install -y cmake git
 ${SUDO} apt upgrade -y
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -63,4 +63,8 @@ pushd /opt
     wget https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip
     unzip clangd-linux-18.1.3.zip
     rm clangd-linux-18.1.3.zip
+
+    wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz
+    tar -zxvf nvim-linux64.tar.gz
+    rm nvim-linux64.tar.gz
 popd
