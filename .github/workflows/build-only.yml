@@ -1,0 +1,17 @@
+name: Build ubuntu-dev-base
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: [24.04]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . -f Dockerfile --build-arg UBUNTU_VERSION=${{ matrix.version }} --tag ubuntu-dev:${{ matrix.version }}_${{ github.sha }}
