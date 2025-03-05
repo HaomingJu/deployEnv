@@ -36,7 +36,7 @@ echo "${RED}UBUNTU_VER: ${UBUNTU_VER}"
 ${SUDO} apt update
 
 ${SUDO} apt install -y \
-    gpg curl g++ gcc build-essential zsh wget \
+    gpg curl g++ gcc build-essential zsh wget gdb \
     tig tree silversearcher-ag htop ssh unzip cargo \
     lsb-release npm rsync language-pack-zh-hans \
     software-properties-common net-tools universal-ctags \
