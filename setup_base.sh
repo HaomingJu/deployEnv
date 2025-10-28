@@ -3,7 +3,7 @@
 # 0. 解析参数
 HOME=/home/haoming
 PRIVILEGE=''
-UBUNTU_VER="20.04"
+UBUNTU_VER="24.04"
 for i in "$@"; do
     case $i in
         --home=*)
@@ -47,7 +47,7 @@ curl https://apt.kitware.com/keys/kitware-archive-latest.asc | ${SUDO} apt-key a
 
 echo "deb https://apt.kitware.com/ubuntu/ `lsb_release -c -s` main" | ${SUDO} tee /etc/apt/sources.list.d/kitware.list
 
-${SUDO} add-apt-repository -y -n ppa:neovim-ppa/unstable
+# ${SUDO} add-apt-repository -y -n ppa:neovim-ppa/unstable
 ${SUDO} add-apt-repository -y -n ppa:git-core/ppa
 ${SUDO} apt update
 ${SUDO} apt install -y cmake git
@@ -61,11 +61,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 
 pushd /opt
-    wget https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip
-    unzip clangd-linux-18.1.3.zip
-    rm clangd-linux-18.1.3.zip
-
-    wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz
-    tar -zxvf nvim-linux64.tar.gz
-    rm nvim-linux64.tar.gz
+    wget -q --show-progress https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+    tar -zxvf nvim-linux-86_64.tar.gz
+    rm nvim-linux-86_64.tar.gz
 popd

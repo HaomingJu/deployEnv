@@ -38,6 +38,11 @@ path_cfg_cheats=$HOME/.config/Cheats
 path_cfg_snippets=$HOME/.config/Snippets
 path_cfg_wiki=$HOME/.config/vimwiki
 
+rm -rf $path_cfg_neovim
+rm -rf $path_cfg_cheats
+rm -rf $path_cfg_snippets
+rm -rf $path_cfg_wiki
+
 # 3. 下载开源代码
 echo -e "${RED}下载开源代码"
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -50,11 +55,7 @@ ln -s -f ${HOME}/deployEnv/conf/zshrc ${HOME}/.zshrc
 ln -s -f ${HOME}/deployEnv/conf/tigrc.theme ${HOME}/.tigrc.theme
 
 
-#echo -e "${RED}nvim安装插件"
-nvim -V --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-nvim -V --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-pushd ~/.config/coc/extensions
-    cp ~/.config/nvim/helper/coc/package.json .
-    npm install
-popd
+echo -e "${RED}nvim安装插件"
+nvim --headless "+Lazy! restore" +qa
+nvim --headless "+TSUpdateSync" +qa RUN
+nvim --headless "+MasonUpdate" "+MasonInstall clangd pyright" +qa
