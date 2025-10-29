@@ -47,10 +47,10 @@ curl https://apt.kitware.com/keys/kitware-archive-latest.asc | ${SUDO} apt-key a
 
 echo "deb https://apt.kitware.com/ubuntu/ `lsb_release -c -s` main" | ${SUDO} tee /etc/apt/sources.list.d/kitware.list
 
-# ${SUDO} add-apt-repository -y -n ppa:neovim-ppa/unstable
+${SUDO} add-apt-repository -y -n ppa:neovim-ppa/unstable
 ${SUDO} add-apt-repository -y -n ppa:git-core/ppa
 ${SUDO} apt update
-${SUDO} apt install -y cmake git
+${SUDO} apt install -y cmake git neovim
 ${SUDO} apt upgrade -y
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
