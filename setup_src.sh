@@ -58,4 +58,4 @@ ln -s -f ${HOME}/deployEnv/conf/tigrc.theme ${HOME}/.tigrc.theme
 echo -e "${RED}nvim安装插件"
 nvim --headless "+Lazy! restore" +qa
 nvim --headless "+TSUpdateSync" +qa RUN
-nvim --headless "+MasonUpdate" "+MasonInstall clangd pyright" +qa
+nvim --headless "+MasonUpdate" "+MasonInstall clangd pyright lua_ls" +qa
