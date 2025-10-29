@@ -62,6 +62,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 pushd /opt
     wget -q --show-progress https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-    tar -zxvf nvim-linux-86_64.tar.gz
-    rm nvim-linux-86_64.tar.gz
+    tar -zxvf nvim-linux-x86_64.tar.gz
+    rm nvim-linux-x86_64.tar.gz
 popd
